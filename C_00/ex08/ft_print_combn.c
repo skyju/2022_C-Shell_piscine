@@ -1,6 +1,6 @@
 #include <unistd.h>
 
-void ft_putchar(char c)
+void ft_putchars(char c)
 {
     write(1, &c, 1);
 }
@@ -18,8 +18,8 @@ void ft_printer(int *arr, int n)
     }
     i = 0;
     while (i < n)
-        ft_putchar(arr[i++] + '0'); 
-    if (arr[0] != 10-n)
+        ft_putchars(arr[i++] + 48); 
+    if (arr[0] != 10 - n)
         write(1, ", ", 2);
 }
 
@@ -32,11 +32,14 @@ void ft_print_combn(int n)
         return ;
     i = 0;
     while (i < n)
-        arr[i] = i++;
-    while (arr[0] != 10-n)
+    {
+        arr[i] = i;
+        ++i;
+    }
+    while (arr[0] <= 10 - n)
     {   
         ft_printer(arr, n);
-        arr[n - 1]++; //맨 끝자리 증가시킴(~9)
+        ++arr[n - 1]; //맨 끝자리 증가시킴(~9)
         i = n - 1;
         while (i) // arr[0] 이전에서 멈춤,, arr[0]은 다음자리가 없으므로
         {
@@ -48,9 +51,4 @@ void ft_print_combn(int n)
             --i;
         }
     }
-}
-
-int main(void)
-{
-    ft_print_combn(6);
 }
