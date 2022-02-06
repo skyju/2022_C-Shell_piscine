@@ -33,7 +33,7 @@ void ft_print_combn(int n)
     i = 0;
     while (i < n)
     {
-        arr[i] = i; //후위 써서 한줄로 줄이는 것 물어보기
+        arr[i] = i;
         ++i;
     }
     while (arr[0] <= 10 - n)
