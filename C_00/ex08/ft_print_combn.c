@@ -33,7 +33,7 @@ void ft_print_combn(int n)
     i = 0;
     while (i < n)
     {
-        arr[i] = i;
+        arr[i] = i; //후위 써서 한줄로 줄이는 것 물어보기
         ++i;
     }
     while (arr[0] <= 10 - n)
@@ -45,7 +45,7 @@ void ft_print_combn(int n)
         {
             if(arr[i] > 9) // 이전 자리가 9보다 커지면
             {
-                arr[i - 1]++; // 그 다음자리를 증가시키고
+                ++arr[i - 1]; // 그 다음자리를 증가시키고
                 arr[i] = 0; // 해당 자리는 0으로 초기화
             }
             --i;
