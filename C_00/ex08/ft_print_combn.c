@@ -41,7 +41,7 @@ void ft_print_combn(int n)
         ft_printer(arr, n);
         ++arr[n - 1]; //맨 끝자리 증가시킴(~9)
         i = n - 1;
-        while (i) // arr[0] 이전에서 멈춤,, arr[0]은 다음자리가 없으므로
+        while (i)
         {
             if(arr[i] > 9) // 이전 자리가 9보다 커지면
             {
