@@ -6,17 +6,22 @@
 /*   By: mkwak <mkwak@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:50:49 by mkwak             #+#    #+#             */
-/*   Updated: 2022/02/08 21:25:24 by mkwak            ###   ########.fr       */
+/*   Updated: 2022/02/09 18:13:57 by mkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strlowcase(char *str)
 {
-	while (*str)
+	int	i;
+	int	x;
+
+	x = 'a' - 'A';
+	i = 0;
+	while (*(str + i))
 	{
-		if (*str >= 65 && *str <= 90)
-			*str += 32;
-		++str;
+		if (*(str + i) >= 'A' && *(str + i) <= 'Z')
+			*(str + i) += x;
+		++i;
 	}
 	return (str);
 }
