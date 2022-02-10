@@ -6,7 +6,7 @@
 /*   By: mkwak <mkwak@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 18:44:50 by mkwak             #+#    #+#             */
-/*   Updated: 2022/02/08 20:56:27 by mkwak            ###   ########.fr       */
+/*   Updated: 2022/02/10 10:11:29 by mkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 	unsigned int		i;
 
 	i = 0;
-	while (*(src + i))
+	while (*(src + i) && i < n)
 	{
 		*(dest + i) = *(src + i);
 		++i;
@@ -23,6 +23,7 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 	while (i < n)
 	{
 		*(dest + i) = '\0';
+		++i;
 	}
 	return (dest);
 }
