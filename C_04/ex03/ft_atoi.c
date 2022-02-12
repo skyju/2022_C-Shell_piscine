@@ -6,7 +6,7 @@
 /*   By: mkwak <mkwak@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 16:50:04 by mkwak             #+#    #+#             */
-/*   Updated: 2022/02/10 20:22:46 by mkwak            ###   ########.fr       */
+/*   Updated: 2022/02/12 17:32:05 by mkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,4 @@ int	ft_atoi(char *str)
 	if (minus % 2 == 1)
 		result *= -1;
 	return (result);
-}
-
-int	main(void)
-{
-	int		i;
-	char	*arr;
-
-	arr = "  	\n  --+-1234abac23423";
-	i = ft_atoi(arr);
-	printf("%d", i);
-	return (0);
 }
