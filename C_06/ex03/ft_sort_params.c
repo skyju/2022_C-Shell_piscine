@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 
 void	printer(char *str)
 {
@@ -40,33 +39,35 @@ int	ft_strcmp(char *s1, char *s2)
 	return (0);
 }
 
-void	ft_swap(char *s1, char *s2)
+void	ft_sort(int n, char **argv)
 {
+	int		i;
+	int		j;
 	char	*temp;
 
-	temp = s1;
-	s1 = s2;
-	s2 = temp;
+	i = 1;
+	while (i <= n - 2)
+	{
+		j = i + 1;
+		while (j <= n - 1)
+		{
+			if (ft_strcmp(*(argv + i), *(argv + j)) > 0)
+			{
+				temp = *(argv + i);
+				*(argv + i) = *(argv + j);
+				*(argv + j) = temp;
+			}
+			j++;
+		}
+		i++;
+	}
 }
 
 int	main(int argc, char **argv)
-{
-	int i;
-	int j;
-	int arg_index;
+{	
+	int	arg_index;
 
-	i = 1;
-	while (i < argc - 1)
-	{
-		j = i + 1;
-		while (j < argc -1)
-		{
-			if (ft_strcmp(argv[i], argv[j]) < 0)
-				ft_swap(argv[i], argv[j]);
-			++j;
-		}
-		++i;
-	}
+	ft_sort(argc, argv);
 	arg_index = 1;
 	while (arg_index < argc)
 	{
