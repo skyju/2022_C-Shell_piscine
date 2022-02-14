@@ -6,28 +6,27 @@
 /*   By: mkwak <mkwak@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 10:17:20 by mkwak             #+#    #+#             */
-/*   Updated: 2022/02/14 10:40:25 by mkwak            ###   ########.fr       */
+/*   Updated: 2022/02/14 16:17:50 by mkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int	ft_size(int min, int max)
-{
-	int	size;
-
-	size = max - min;
-	if(size < 0)
-		size *= -1;
-	return (size);
-}
-
 int	*ft_range(int min, int max)
 {
 	int	*arr;
+	int	index;
 
 	if (min >= max)
+	{
 		return (0);
-	arr = (int *)malloc(ft_size(min, max) * sizeof(int));
-	
+	}
+	arr = (int *)malloc((max - min) * sizeof(int));
+	index = 0;
+	while (index < (max - min))
+	{	
+		arr[index] = min + index;
+		++index;
+	}
+	return (arr);
 }

@@ -17,7 +17,7 @@ int	ft__is_prime(int nb)
 	n = 2;
 	if (nb < 2)
 		return (0);
-	while (n < nb)
+	while (n < nb / 2)
 	{
 		if (nb % n == 0)
 			return (0);

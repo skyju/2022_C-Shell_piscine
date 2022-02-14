@@ -6,7 +6,7 @@
 /*   By: mkwak <mkwak@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 12:22:48 by mkwak             #+#    #+#             */
-/*   Updated: 2022/02/12 17:35:01 by mkwak            ###   ########.fr       */
+/*   Updated: 2022/02/14 17:25:52 by mkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int main(void)
 {
 	char *str1 = "   ---+--+AABCDESSEZ";
 	char *str2 = "  \n \ta-a";
-	char *str3 = " \v  ++2147483647";
+	char *str3 = " \v  ++2147483648";
 	char *str4 = " \f  -----+-+!!@@#..<";
 	char *str5 = "\r  \n -+-++-+2147483648";
 	printf("10\n");
@@ -121,7 +121,7 @@ int main(void)
 	printf("%d\n", ft_atoi_base(str1, "ABZ")); 	
 	printf("\n");
 	printf("0\n");
-	printf("%d\n", ft_atoi_base(str3, "A-+")); // +- include
+	printf("%d\n", ft_atoi_base(str3, "AWS")); // +- include
 	printf("\n");
 	printf("0\n");
 	printf("%d\n", ft_atoi_base(str1, "")); // 0base

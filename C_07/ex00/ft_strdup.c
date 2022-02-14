@@ -6,7 +6,7 @@
 /*   By: mkwak <mkwak@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 10:17:20 by mkwak             #+#    #+#             */
-/*   Updated: 2022/02/14 10:33:26 by mkwak            ###   ########.fr       */
+/*   Updated: 2022/02/14 16:17:54 by mkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,20 @@ int	ft_strlen(char *src)
 
 char	*ft_strdup(char *src)
 {
-	char	*t;
+	char	*new_src;
 	int		src_length;
 	int		i;
 
 	src_length = ft_strlen(src);
-	t = (char *)malloc(src_length + 1 * sizeof(char));
-	while (src[i] != '\0')
+	new_src = (char *)malloc(src_length + 1 * sizeof(char));
+	if (!(new_src))
+		return (0);
+	i = 0;
+	while (src[i])
 	{
-		t[i] = src[i];
+		new_src[i] = src[i];
 		++i;
 	}
-	t[i] = '\0';
-	return (t);
+	new_src[i] = '\0';
+	return (new_src);
 }
