@@ -6,12 +6,11 @@
 /*   By: mkwak <mkwak@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 10:17:20 by mkwak             #+#    #+#             */
-/*   Updated: 2022/02/14 19:26:46 by mkwak            ###   ########.fr       */
+/*   Updated: 2022/02/14 20:25:59 by mkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
 int	ft__strlen(char *src)
 {
@@ -30,7 +29,7 @@ char	*ft_strcat(char *dest, char *src)
 
 	i = 0;
 	dest_length = ft__strlen(dest);
-	while (*src)
+	while (*(src + i))
 	{
 		*(dest + dest_length + i) = *(src + i);
 		++ i;
@@ -55,8 +54,8 @@ int	ft_malloc_size_cal(int size, char **strs, char *sep)
 		result_length += sep_length;
 		++index;
 	}
-	result_length += ft__strlen(strs[index]) + 1;
-	return result_length;
+	result_length += ft__strlen(strs[index]);
+	return result_length + 1;
 }
 
 char	*ft_strjoin(int size, char **strs, char *sep)
@@ -64,21 +63,19 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	int		total_length;
 	int		i;
 	char	*to_return;
-	char	*str;
 
 	if (size <= 0)
 		return ((char *)malloc(sizeof(char)));
 	total_length = ft_malloc_size_cal(size, strs, sep);
-	to_return = str = (char *)malloc(total_length * sizeof(char));
+	to_return = (char *)malloc(total_length * sizeof(char));
 
 	i = 0;
 	while (i < size - 2)
 	{
-		str = ft_strcat(str, *(strs + i));
-		str = ft_strcat(str, sep);
+		to_return = ft_strcat(to_return, *(strs + i));
+		to_return = ft_strcat(to_return, sep);
 		++i;
 	}
-	str = ft_strcat(str, *(strs + i));
-
+	to_return = ft_strcat(to_return, *(strs + i));
 	return (to_return);
 }
