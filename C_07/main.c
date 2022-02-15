@@ -2,8 +2,7 @@
 #include "./ex01/ft_range.c"
 #include "./ex02/ft_ultimate_range.c"
 #include "./ex03/ft_strjoin.c"
-
-//#include "./ex04/ft_convert_base.c"
+#include "./ex04/ft_convert_base.c"
 //#include "./ex04/ft_convert_base2.c"
 //#include "./ex05/ft_split.c"
 #include <stdio.h>
@@ -64,39 +63,45 @@ int main(){
 		strs[9] = "!!!";
 		char *sep1 = " ";
 		char *sep2 = "\n";
-		char *sep3 = "---!!---";
+		//char *sep3 = "---!!---";
 		char *sep4 = "";
 		char *str;
-		printf("----5----\n");
+		printf("[ 5개 공백 ]\n");
 		str = ft_strjoin(5, strs, sep1);
 		printf("%s\n", str);
 		free(str);
-		printf("----10----\n");
+
+		printf("[ 10개 개행 ]\n");
 		str = ft_strjoin(10, strs, sep2);
 		printf("%s\n", str);
 		free(str);
-		printf("----2----\n");
+	/*
+		printf("[ 2개 ---!!--- ]\n");
 		str = ft_strjoin(2, strs, sep3);
 		printf("%s\n", str);
 		free(str);
-		printf("----1----\n");
-		str = ft_strjoin(1, strs, sep1);
+*/
+		printf("[ 1개 공백 ]\n");
+		str = ft_strjoin(1, strs, " ");
 		printf("%s\n", str);
 		free(str);
-		printf("----0----\n");
+
+		printf("[ 0개 공백 ]\n");
 		str = ft_strjoin(0, strs, sep1);
 		printf("%s\n", str);
 		free(str);
-		printf("----10----\n");
+		system("leaks a.out");
+
+		printf("[ 10개 붙임 ]\n");
 		str = ft_strjoin(10, strs, sep4);
 		printf("%s\n", str);
 		free(str);
 	}
-	/*
 	{
 		printf("----ex04----\n");
 		char *str;
 		str = ft_convert_base("15858", "012345678", "0123456789ABCDEF");
+		system("leaks a.out");
 		printf("2A9B : %s\n", str);
 		free(str);
 		str = ft_convert_base("  \t \n -+-+-28909abc", "0123456789abcdef", "0123456789ABCDEFGHIJ");
@@ -120,6 +125,7 @@ int main(){
 		printf("null : %s\n", str);
 		free(str);
 	}
+	/*
 	{
 		printf("----ex05----\n");
 		char **str_arr;

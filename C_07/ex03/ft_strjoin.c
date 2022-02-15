@@ -6,11 +6,12 @@
 /*   By: mkwak <mkwak@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 10:17:20 by mkwak             #+#    #+#             */
-/*   Updated: 2022/02/14 20:25:59 by mkwak            ###   ########.fr       */
+/*   Updated: 2022/02/15 15:40:19 by mkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 
 int	ft__strlen(char *src)
 {
@@ -34,6 +35,7 @@ char	*ft_strcat(char *dest, char *src)
 		*(dest + dest_length + i) = *(src + i);
 		++ i;
 	}
+	*(dest + dest_length + i) = '\0';
 	return (dest);
 }
 
@@ -47,7 +49,7 @@ int	ft_malloc_size_cal(int size, char **strs, char *sep)
 	sep_length = ft__strlen(sep);
 	index = 0;
 	if (size == 1)
-		return (ft__strlen(strs[0]));
+		return (ft__strlen(strs[0]) + 1);
 	while (index < size - 1)
 	{
 		result_length += ft__strlen(strs[index]);
@@ -64,13 +66,13 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	int		i;
 	char	*to_return;
 
-	if (size <= 0)
+	if (size == 0)
 		return ((char *)malloc(sizeof(char)));
 	total_length = ft_malloc_size_cal(size, strs, sep);
+	printf("[ malloc size는 %d ]\n", total_length);
 	to_return = (char *)malloc(total_length * sizeof(char));
-
 	i = 0;
-	while (i < size - 2)
+	while (i < (size - 1))
 	{
 		to_return = ft_strcat(to_return, *(strs + i));
 		to_return = ft_strcat(to_return, sep);
