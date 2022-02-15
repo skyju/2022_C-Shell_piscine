@@ -17,58 +17,58 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-int	ft_possibility(int table[10], int x, int y)
+int	ft_is_promising(int chessboard[], int row_num, int col_num)
 {
 	int	i;
 
-	i = -1;
-	while (++i < x)
-		if (y == table[i] || i - table[i] == x - y || i + table[i] == x + y)
+	i = 0;
+	while (i < row_num)
+	{
+		if (col_num == chessboard[i]
+			|| i - chessboard[i] == row_num - col_num
+			|| i + chessboard[i] == row_num + col_num)
 			return (0);
+		++i;
+	}
 	return (1);
 }
 
-void	ft_solve(int table[10], int *result, int row)
+void	ft_check_node(int chessboard[], int *count, int row_num)
 {
-	int	col;
-	int	res;
+	int	col_num;
+	int	index;
 
-	if (row == 10)
+	if (row_num == 10)
 	{
-		*result += 1;
-		res = -1;
-		while (++res < 10)
-			ft_putchar(table[res] + '0');
+		*count += 1;
+		index = -1;
+		while (++index < 10)
+			ft_putchar(chessboard[index] + '0');
 		ft_putchar('\n');
 	}
 	else
 	{
-		col = -1;
-		while (++col < 10)
+		col_num = 0;
+		while (col_num < 10)
 		{
-			if (ft_possibility(table, row, col))
+			if (ft_is_promising(chessboard, row_num, col_num))
 			{
-				table[row] = col;
-				ft_solve(table, result, row + 1);
+				chessboard[row_num] = col_num;
+				ft_check_node(chessboard, count, row_num + 1);
 			}
+			++col_num;
 		}
 	}
 }
 
 int	ft_ten_queens_puzzle(void)
 {
-	int		table[10];
-	int		row;
-	int		result;
+	int		chessboard[10];
+	int		row_num;
+	int		count;
 
-	row = 0;
-	while (row < 10)
-	{
-		table[row] = -1;
-		++row;
-	}
-	row = 0;
-	result = 0;
-	ft_solve(table, &result, row);
-	return (result);
+	row_num = 0;
+	count = 0;
+	ft_check_node(chessboard, &count, row_num);
+	return (count);
 }
