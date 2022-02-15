@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
 int	ft_is_white_space(char c)
 {
@@ -95,76 +94,53 @@ long long	ft_atoi_base(char *nbr, int ibase, char *base_from)
 	return (result);
 }
 
-int	ft_size_cal(long long nbr, int obase)
+int	ft_cal_malloc_size(long long nbr, int obase)
 {
 	int cnt;
 
 	cnt = 0;
-	while (nbr != 0)
+	while (nbr >= obase)
 	{
 		nbr /= obase;
 		++cnt;
 	}
-	return (cnt);
+	return (++cnt);
 }
 
-char	*ft_itoa_base(long long nbr, int obase, char *base_to, char *result)
+int	ft_itoa_base(int nbr, char *base_to, char *res, int i, int obase)
 {
-	int	i;
-	int	count;
-	int	deg;
-	int	temp;
-	
-	i = 0;
-	count = 0;
-	deg = 1;
-	if (nbr == 0)
+	long long	n;
+
+	n = nbr;
+	if (nbr < 0)
 	{
-		return (&base_to[i]);
-	}
-	while (1)
-	{
-		if (nbr / deg > 0)
-			++count;
-		else
-		{
-			deg /= obase;
-			break;
-		}
-	}
-	while (count > 0)
-	{
-		temp = nbr / deg;
-		result[i] = base_to[temp];
-		nbr -= (nbr / deg) * deg;
-		deg /= obase;
-		--count;
+		*res = '-';
+		n *= -1;
 		++i;
 	}
-	result[i] = '\0';
-	return (result);
+	if (n / obase != 0)
+		ft_itoa_base(n / obase, base_to, res, --i, obase);
+	res[i] = base_to[n % obase];
+	return (i);
 }
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
 	int			ibase;
 	int			obase;
-	long long	after_ibase_cal;
-	char		*to_return;
-	int			sign;
+	long long	after_atoi;
+	char		*res;
+	int			last_i;
+	int			malloc_size;
 
 	ibase = ft_base_checking(base_from);
 	obase = ft_base_checking(base_to);
-	if(ibase <= 1 || obase <= 1 || ibase == -1 || obase == -1)
+	if(ibase <= 1 || obase <= 1)
 		return (0);
-	after_ibase_cal = ft_atoi_base(nbr, ibase, base_from);
-	printf("%lld", after_ibase_cal);
-	if (after_ibase_cal < 0)
-	{
-		sign = 1;
-		after_ibase_cal *= -1;
-	}
-	to_return = (char *)malloc(ft_size_cal(after_ibase_cal, obase) + 1 * sizeof(char));
-	ft_itoa_base(after_ibase_cal, obase, base_to, to_return);
-	return (to_return);
+	after_atoi = ft_atoi_base(nbr, ibase, base_from);
+	malloc_size = ft_cal_malloc_size(after_atoi, obase);
+	res = (char *)malloc(malloc_size * sizeof(char));
+	last_i = ft_itoa_base(after_atoi, base_to, res, malloc_size, obase);
+	res[last_i + 1] = '\0';
+	return (res);
 }

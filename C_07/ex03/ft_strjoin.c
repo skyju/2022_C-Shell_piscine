@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
 int	ft__strlen(char *src)
 {
@@ -67,9 +66,8 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	char	*to_return;
 
 	if (size == 0)
-		return ((char *)malloc(sizeof(char)));
+		return ((char *)malloc(1));
 	total_length = ft_malloc_size_cal(size, strs, sep);
-	printf("[ malloc size는 %d ]\n", total_length);
 	to_return = (char *)malloc(total_length * sizeof(char));
 	i = 0;
 	while (i < (size - 1))

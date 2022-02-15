@@ -90,18 +90,20 @@ int main(){
 		str = ft_strjoin(0, strs, sep1);
 		printf("%s\n", str);
 		free(str);
-		system("leaks a.out");
 
 		printf("[ 10개 붙임 ]\n");
 		str = ft_strjoin(10, strs, sep4);
 		printf("%s\n", str);
 		free(str);
+		//system("leaks a.out");
 	}
 	{
 		printf("----ex04----\n");
 		char *str;
+		str = ft_convert_base("1010", "01", "0123456789");
+		printf("10 : %s\n", str);
+		free(str);
 		str = ft_convert_base("15858", "012345678", "0123456789ABCDEF");
-		system("leaks a.out");
 		printf("2A9B : %s\n", str);
 		free(str);
 		str = ft_convert_base("  \t \n -+-+-28909abc", "0123456789abcdef", "0123456789ABCDEFGHIJ");
