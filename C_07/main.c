@@ -63,7 +63,7 @@ int main(){
 		strs[9] = "!!!";
 		char *sep1 = " ";
 		char *sep2 = "\n";
-		//char *sep3 = "---!!---";
+		char *sep3 = "---!!---";
 		char *sep4 = "";
 		char *str;
 		printf("[ 5개 공백 ]\n");
@@ -75,12 +75,12 @@ int main(){
 		str = ft_strjoin(10, strs, sep2);
 		printf("%s\n", str);
 		free(str);
-	/*
+
 		printf("[ 2개 ---!!--- ]\n");
 		str = ft_strjoin(2, strs, sep3);
 		printf("%s\n", str);
 		free(str);
-*/
+
 		printf("[ 1개 공백 ]\n");
 		str = ft_strjoin(1, strs, " ");
 		printf("%s\n", str);

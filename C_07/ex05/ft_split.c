@@ -6,7 +6,7 @@
 /*   By: mkwak <mkwak@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 10:17:20 by mkwak             #+#    #+#             */
-/*   Updated: 2022/02/15 15:50:04 by mkwak            ###   ########.fr       */
+/*   Updated: 2022/02/15 20:52:10 by mkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,5 @@ char	**ft_split(char *str, char *charset)
 
 	str_length = ft___strlen(str);
 	charset_length = ft___strlen(charset);
-
 
 }

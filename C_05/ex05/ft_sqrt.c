@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkwak <mkwak@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mkwak <mkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/12 12:22:48 by mkwak             #+#    #+#             */
-/*   Updated: 2022/02/12 17:35:01 by mkwak            ###   ########.fr       */
+/*   Created: 2022/02/15 19:27:59 by mkwak             #+#    #+#             */
+/*   Updated: 2022/02/15 19:28:00 by mkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_sqrt(int nb)
 {
-	int	sqrt;
+	long long	sqrt;
 
 	sqrt = 1;
 	if (nb <= 0)
@@ -21,8 +21,6 @@ int	ft_sqrt(int nb)
 	{
 		if (sqrt * sqrt == nb)
 			return (sqrt);
-		else if (sqrt > 46340)
-			return (0);
 		++sqrt;
 	}
 	return (0);
