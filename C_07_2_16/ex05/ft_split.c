@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
 int	ft_is_charset(char c, char *charset)
 {
@@ -27,72 +26,62 @@ int	ft_is_charset(char c, char *charset)
 	return (0);
 }
 
-int	ft_full_malloc_size(char *str, char *charset)
+int	ft_count_words(char *str, char *charset)
 {
 	int	i;
-	int	malloc_size;
+	int	count;
 
 	i = 0;
-	malloc_size = 1;
-	while (*(str + i))
+	count = 1;
+	while (str[i] != '\0')
 	{
-		while (*(str + i) && ft_is_charset(str[i], charset))
-			++i;
-		while (*(str + i) && !ft_is_charset(str[i], charset))
-		{
-			++i;
-			++malloc_size;
-		}
-		if (*(str + i) && ft_is_charset(str[i], charset))
-			++malloc_size;
+		if (ft_is_charset(str[i], charset) && !ft_is_charset(str[i + 1], charset))
+			++count;
+		++i;
 	}
-	return (malloc_size);
+	return (count);
 }
 
 char	*ft_make_str(char *str, char *charset)
 {
+	int		str_len;
 	int		i;
-	int		j;
-	char	*to_return;
+	char	*new_str;
 
+	str_len = 0;
+	while (*(str + str_len) && !ft_is_charset(str[str_len], charset))
+		++str_len;
+	new_str = (char *)malloc(str_len * sizeof(char) + 1);
 	i = 0;
-	while (*(str + i) && !ft_is_charset(str[i], charset))
-		++i;
-	to_return = (char *)malloc(i * sizeof(char) + 1);
-	printf ("한 단어 배열 사이즈: %d\n", i+1);
-	j = 0;
-	while (j < i)
+	while (i < str_len)
 	{
-		to_return[j] = str[j];
-		++j;
+		new_str[i] = str[i];
+		++i;
 	}
-	to_return[j] = '\0';
-	return (to_return);
+	new_str[i] = '\0';
+	return (new_str);
 }
 
 char	**ft_split(char *str, char *charset)
 {
-	char	**to_return;
-	int		to_return_i;
+	char	**str_arr;
+	int		i;
 
-	to_return = (char **)
-		malloc(ft_full_malloc_size(str, charset) + 1 * sizeof(char));
-
-	printf("총 return size: %d\n", ft_full_malloc_size(str, charset)+1);
-	
-	to_return_i = 0;
+	str_arr = (char **)
+		malloc(ft_count_words(str, charset) + 1 * sizeof(char *));
+	i = 0;
 	while (*str)
 	{
 		while (*str && ft_is_charset(*str, charset))
 			++str;
 		if (*str && !ft_is_charset(*str, charset))
 		{
-			to_return[to_return_i] = ft_make_str(str, charset);
-			++to_return_i;
+			str_arr[i] = ft_make_str(str, charset);
+			++i;
 		}
 		while (*str && !ft_is_charset(*str, charset))
 			++str;
 	}
-	*(to_return + to_return_i) = 0;
-	return (to_return);
+	str_arr[i] = 0;
+	return (str_arr);
 }
