@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkwak <mkwak@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 10:17:20 by mkwak             #+#    #+#             */
-/*   Updated: 2022/02/16 12:56:15 by mkwak            ###   ########.fr       */
+/*   Updated: 2022/02/14 16:17:50 by mkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int	ft_ultimate_range(int **range, int min, int max)
+int	*ft_range(int min, int max)
 {
+	int	*arr;
 	int	index;
-	int	*result;
 
 	if (min >= max)
 	{
-		*range = 0;
 		return (0);
 	}
-	*range = (result = (int *)malloc((max - min) * sizeof(int)));
+	arr = (int *)malloc((max - min) * sizeof(int));
 	index = 0;
 	while (index < (max - min))
-	{
-		*(result + index) = min + index;
+	{	
+		arr[index] = min + index;
 		++index;
 	}
-	if (!*result)
-		return (-1);
-	return (max - min);
+	return (arr);
 }
