@@ -6,7 +6,7 @@
 /*   By: mkwak <mkwak@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 10:17:20 by mkwak             #+#    #+#             */
-/*   Updated: 2022/02/17 11:40:45 by mkwak            ###   ########.fr       */
+/*   Updated: 2022/02/17 14:41:46 by mkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ char	*ft_make_str(char *str, char *charset)
 	while (*(str + str_len) && !ft_is_charset(str[str_len], charset))
 		++str_len;
 	new_str = (char *)malloc(str_len * sizeof(char) + 1);
+	if (new_str == 0)
+		return (0);
 	i = 0;
 	while (i < str_len)
 	{
@@ -72,6 +74,8 @@ char	**ft_split(char *str, char *charset)
 
 	word_num = ft_count_words(str, charset);
 	str_arr = (char **)malloc((word_num + 1) * sizeof(char *));
+	if (str_arr == 0)
+		return (0);
 	arr_i = 0;
 	i = 0;
 	while (*(str + i))

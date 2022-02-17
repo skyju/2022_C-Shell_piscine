@@ -6,7 +6,7 @@
 /*   By: mkwak <mkwak@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 10:17:20 by mkwak             #+#    #+#             */
-/*   Updated: 2022/02/17 12:51:44 by mkwak            ###   ########.fr       */
+/*   Updated: 2022/02/17 14:41:01 by mkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	after_atoi = ft_atoi_base(nbr, ibase, base_from);
 	malloc_size = ft_cal_malloc_size(after_atoi, obase);
 	result = (char *)malloc((malloc_size + 1) * sizeof(char));
+	if (result == 0)
+		return (0);
 	ft_itoa_base(after_atoi, base_to, result, malloc_size - 1);
 	result[malloc_size] = '\0';
 	return (result);

@@ -6,7 +6,7 @@
 /*   By: mkwak <mkwak@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 10:17:20 by mkwak             #+#    #+#             */
-/*   Updated: 2022/02/17 11:19:16 by mkwak            ###   ########.fr       */
+/*   Updated: 2022/02/17 14:43:55 by mkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,10 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	}
 	total_length = ft_malloc_size_cal(size, strs, sep);
 	str = (char *)malloc(total_length * sizeof(char));
-	i = 0;
-	if (*(str + i) != 0)
-		*(str + i) = 0;
+	if (str == 0)
+		return (0);
+	if (*str != 0)
+		*str = 0;
 	i = 0;
 	while (i < (size - 1))
 	{
