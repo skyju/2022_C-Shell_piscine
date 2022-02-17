@@ -6,7 +6,7 @@
 /*   By: mkwak <mkwak@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 10:17:20 by mkwak             #+#    #+#             */
-/*   Updated: 2022/02/16 13:00:43 by mkwak            ###   ########.fr       */
+/*   Updated: 2022/02/16 16:25:57 by mkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_cal_malloc_size(long long nbr, int obase)
 {
 	int	cnt;
 
-	cnt = 0;
+	cnt = 1;
 	if (nbr < 0)
 	{
 		nbr *= -1;
@@ -51,7 +51,7 @@ int	ft_cal_malloc_size(long long nbr, int obase)
 		nbr /= obase;
 		++cnt;
 	}
-	return (++cnt);
+	return (cnt);
 }
 
 void	ft_itoa_base(int nbr, char *base_to, char *result, int i)

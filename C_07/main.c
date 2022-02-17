@@ -4,7 +4,7 @@
 #include "./ex03/ft_strjoin.c"
 #include "./ex04/ft_convert_base.c"
 #include "./ex04/ft_convert_base2.c"
-//#include "./ex05/ft_split.c"
+#include "./ex05/ft_split.c"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -68,34 +68,40 @@ int main(){
 		char *str;
 		printf("[ 5개 공백 ]\n");
 		str = ft_strjoin(5, strs, sep1);
+		//printf("%p\n", str);
 		printf("%s\n", str);
 		free(str);
 
 		printf("[ 10개 개행 ]\n");
 		str = ft_strjoin(10, strs, sep2);
+		//printf("%p\n", str);
 		printf("%s\n", str);
 		free(str);
 
 		printf("[ 2개 ---!!--- ]\n");
 		str = ft_strjoin(2, strs, sep3);
+		//printf("%p\n", str);
 		printf("%s\n", str);
 		free(str);
 
 		printf("[ 1개 공백 ]\n");
 		str = ft_strjoin(1, strs, " ");
+		//printf("%p\n", str);
 		printf("%s\n", str);
 		free(str);
 
 		printf("[ 0개 공백 ]\n");
 		str = ft_strjoin(0, strs, sep1);
+		//printf("%p\n", str);
 		printf("%s\n", str);
 		free(str);
 
 		printf("[ 10개 붙임 ]\n");
 		str = ft_strjoin(10, strs, sep4);
+		//printf("%p\n", str);
 		printf("%s\n", str);
 		free(str);
-		system("leaks a.out");
+		//system("leaks a.out");
 	}
 	{
 		printf("----ex04----\n");
@@ -127,26 +133,31 @@ int main(){
 		printf("null : %s\n", str);
 		free(str);
 	}
-	/*
+	
 	{
 		printf("----ex05----\n");
 		char **str_arr;
 		int i;
-		str_arr = ft_split("Hello World Cat\tDog\nPizza School"," \n");
+		str_arr = ft_split("Hello World Cat\tDog\nPizza School", " \n");
 		for(i=0;str_arr[i] != 0; i++)
 			printf("%s\n",str_arr[i]);
+		/*
 		for(i=0;str_arr[i] != 0; i++)
 			free(str_arr[i]);
 		free(str_arr[i]);
-		free(str_arr);	
-		str_arr = ft_split("Hello World Cat\tDog\nPizza School"," World");
+		*/
+		free(str_arr);
+		printf("---------------\n");
+		str_arr = ft_split("Hello World Cat\tDog\nPizza School", " World");
 		for(i=0;str_arr[i] != 0; i++)
 			printf("%s\n",str_arr[i]);
+		/*
 		for(i=0;str_arr[i] != 0; i++)
 			free(str_arr[i]);
 		free(str_arr[i]);
+		*/
 		free(str_arr);
 
 	}
-	*/
+	
 }

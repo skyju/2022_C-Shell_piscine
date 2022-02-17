@@ -6,139 +6,87 @@
 /*   By: mkwak <mkwak@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 10:17:20 by mkwak             #+#    #+#             */
-/*   Updated: 2022/02/16 13:22:55 by mkwak            ###   ########.fr       */
+/*   Updated: 2022/02/17 11:19:44 by mkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 
-/* 토큰문자열 갯수를 구하는 함수*/
-static size_t k_cntword(const char *s, char c)
+int	ft_is_charset(char c, char *charset)
 {
-	size_t	cnt;
-	size_t	flag;
+	int	i;
 
-	cnt = 0;
-	flag = 0;
-	while (*s != NULL)
+	i = 0;
+	while (charset[i])
 	{
-		if (*s != c && flag == 0)
-		{
-			flag = 1;
-			cnt++;
-		}
-		else if (*s == c)
-			flag = 0;
-		s++;
+		if (charset[i] == c)
+			return (1);
+		++i;
 	}
-	return (cnt);
+	return (0);
 }
 
-/* 각토큰문자열의 길이를 구하는 함수*/
-static size_t k_wordlen(char const *s, char c)
+int	ft_count_words(char *str, char *charset)
 {
-	size_t len;
-
-	len = 0;
-	while (s[len] && s[len] != c)
-		len++;
-	return (len);
-}
-
-/* 토큰문자열 한개를 새로운 메모리에 복사하는 함수 */
-static char *k_strndup(const char *s, size_t num)
-{
-	char	*word;
-
-	if (!(word = (char *)malloc(sizeof(char) * (num + 1))))
-		return (0);
-	while (num-- > 0)
-		*word++ = *s++;
-
-	*word = '\0';
-	return (word);
-}
-
-/* 이차원배열의 메모리를 해제하는 함수 */
-static void k_free_str(char **s, int i)
-{
-	while (i-- > 0)
-	{
-		free(s[i]);
-		s[i] = NULL;
-	}
-	free(s);
-	s = NULL;
-}
-
-/* split 본 함수 */
-char **split(char const *str, char *c)
-{
-	size_t	nb;
-	size_t	wordlen;
-	size_t	cnt;
-	char    **result;
-
-	cnt = k_cntword(str, c);
-	if (!(result = (char **)malloc(sizeof(char *) * (cnt + 1))))
-		return (0);
-	nb = 0;
-	while (nb < cnt)
-	{
-		while (*str && *str == c)
-			str++;
-		wordlen = k_wordlen(str, c);
-		if (!(result[nb] = k_strndup(str, wordlen)))
-		{
-			k_free_str(result, nb);
-			return (0);
-		}
-		str += wordlen;
-		nb++;
-	}
-	result[cnt] = 0;
-	return (result);
-}
-
-/*
-int	ft_token_num(char *str, char c)
-{
-	int	cnt;
-	int	flag;
-
-	cnt = 0;
-	flag = 0;
-	while (*str)
-	{
-		if(*str != c && flag == 0)
-		{
-			flag = 1;
-			++cnt;
-		}
-		else if (*str == c)
-			flag = 0;
-		++str;
-	}
-	return (cnt);
-}
-
-int	ft___strlen(char *src)
-{
+	int	i;
 	int	count;
 
-	count = 0;
-	while (src[count])
-		++count;
+	i = 0;
+	count = 1;
+	while (str[i] != '\0')
+	{
+		if (ft_is_charset(str[i], charset)
+			&& !ft_is_charset(str[i + 1], charset))
+			++count;
+		++i;
+	}
 	return (count);
+}
+
+char	*ft_make_str(char *str, char *charset)
+{
+	int		str_len;
+	int		i;
+	char	*new_str;
+
+	str_len = 0;
+	while (*(str + str_len) && !ft_is_charset(str[str_len], charset))
+		++str_len;
+	new_str = (char *)malloc(str_len * sizeof(char) + 1);
+	i = 0;
+	while (i < str_len)
+	{
+		new_str[i] = str[i];
+		++i;
+	}
+	new_str[i] = 0;
+	return (new_str);
 }
 
 char	**ft_split(char *str, char *charset)
 {
-	int	str_length;
-	int	charset_length;
+	char	**str_arr;
+	int		arr_i;
+	int		i;
+	int		word_num;
 
-	str_length = ft___strlen(str);
-	charset_length = ft___strlen(charset);
-
+	word_num = ft_count_words(str, charset);
+	str_arr = (char **)malloc((word_num + 1) * sizeof(char *));
+	arr_i = 0;
+	i = 0;
+	while (*(str + i))
+	{
+		while (*(str + i) && ft_is_charset(*(str + i), charset))
+			++i;
+		if (*(str + i) && !ft_is_charset(*(str + i), charset))
+		{
+			str_arr[arr_i] = ft_make_str((str + i), charset);
+			++arr_i;
+		}
+		while (*(str + i) && !ft_is_charset(*(str + i), charset))
+			++i;
+	}
+	str_arr[arr_i] = 0;
+	return (str_arr);
 }
-*/
