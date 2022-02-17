@@ -6,7 +6,7 @@
 /*   By: mkwak <mkwak@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 10:17:20 by mkwak             #+#    #+#             */
-/*   Updated: 2022/02/14 16:17:50 by mkwak            ###   ########.fr       */
+/*   Updated: 2022/02/17 13:18:53 by mkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	*ft_range(int min, int max)
 		return (0);
 	}
 	arr = (int *)malloc((max - min) * sizeof(int));
+	if (arr == 0)
+		return (0);
 	index = 0;
 	while (index < (max - min))
 	{	

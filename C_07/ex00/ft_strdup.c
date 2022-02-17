@@ -6,7 +6,7 @@
 /*   By: mkwak <mkwak@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 10:17:20 by mkwak             #+#    #+#             */
-/*   Updated: 2022/02/14 16:17:54 by mkwak            ###   ########.fr       */
+/*   Updated: 2022/02/17 12:30:25 by mkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_strdup(char *src)
 	int		i;
 
 	src_length = ft_strlen(src);
-	new_src = (char *)malloc(src_length + 1 * sizeof(char));
+	new_src = (char *)malloc((src_length + 1) * sizeof(char));
 	if (!(new_src))
 		return (0);
 	i = 0;
