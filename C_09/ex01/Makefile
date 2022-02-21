@@ -1,4 +1,4 @@
-TARGET = libft.a
+NAME = libft.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 DIR = ./srcs/
@@ -10,16 +10,16 @@ INC = includes
 .c.o :
 	${CC} ${CFLAGS} -c $^ -o $@ -I ${INC}
 
-${TARGET}: ${OBJS}
+${NAME}: ${OBJS}
 	ar rc $@ ${OBJS}
 	ranlib $@
 
-all: ${TARGET}
+all: ${NAME}
 
 clean:
 	rm -f ${OBJS}
 
 fclean : clean
-	rm -f ${TARGET}
+	rm -f ${NAME}
 
 re : fclean all
