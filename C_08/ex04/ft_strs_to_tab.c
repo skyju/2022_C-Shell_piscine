@@ -6,7 +6,7 @@
 /*   By: mkwak <mkwak@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 13:43:35 by mkwak             #+#    #+#             */
-/*   Updated: 2022/02/19 17:41:57 by mkwak            ###   ########.fr       */
+/*   Updated: 2022/02/20 17:42:35 by mkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,19 @@ char	*ft_strdup(char *str)
 	return (result);
 }
 
-struct s_stock_str *ft_strs_to_tab(int ac, char **av)
+struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 {
-	struct s_stock_str *result;
-	int	i;
-	
-	result = (struct s_stock_str *)malloc(sizeof(struct s_stock_str) * ac);
-	(void)ac;
-	i = 0;
-	while (av[i] != 0)
+	struct s_stock_str	*result;
+	int					i;
+
+	if (ac < 0)
+		return (0);
+	result = (struct s_stock_str *)
+		malloc(sizeof(struct s_stock_str) * (ac + 1));
+	if (result == 0)
+		return (0);
+	i = 0; 
+	while (i < ac)
 	{
 		(result + i)->size = ft_strlen(av[i]);
 		(result + i)->str = av[i];
@@ -60,5 +64,6 @@ struct s_stock_str *ft_strs_to_tab(int ac, char **av)
 		++i;
 	}
 	(result + i)->str = 0;
+	(result + i)->copy = 0;
 	return (result);
 }
