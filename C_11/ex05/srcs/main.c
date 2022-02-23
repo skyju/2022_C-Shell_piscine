@@ -46,7 +46,7 @@ void	ft_error_by_zero(char op)
 	if (op == '/')
 		ft_putstr("Stop : division by zero");
 	else
-		ft_putstr("Stop : division by zero");
+		ft_putstr("Stop : modulo by zero");
 }
 
 void	ft_calculator(int v1, int v2, char *o, int(*f[])(int, int))
@@ -81,10 +81,7 @@ int	main(int argc, char **argv)
 	char	*op;
 
 	if (argc != 4)
-	{
-		ft_putstr("\n");
 		return (0);
-	}
 	value1 = ft_atoi(argv[1]);
 	value2 = ft_atoi(argv[3]);
 	op = argv[2];
