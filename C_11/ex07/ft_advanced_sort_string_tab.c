@@ -21,24 +21,25 @@ void ft_swap(char **s1, char **s2)
 	*s2 = temp;
 }
 
-void ft_advanced_sort_string_tab(char **tab, int (*cmp)(char *, char *))
+void	ft_advanced_sort_string_tab(char **tab, int (*cmp)(char *, char *))
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (tab[i])
 	{
-		j = i + 1;
+		j = 0;
 		while (tab[j])
 		{
-			if ((*cmp)(tab[i], tab[j]) > 0)
-				ft_swap(&tab[i], &tab[j]);
+			if (tab[j + 1] && (*cmp)(tab[j], tab[j + 1]) > 0)
+				ft_swap(&tab[j], &tab[j + 1]);
 			++j;
 		}
 		++i;
 	}
 }
+
 
 
 int decending_cmp(char *str1, char *str2)
