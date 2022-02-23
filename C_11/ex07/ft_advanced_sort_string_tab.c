@@ -53,10 +53,15 @@ int decending_cmp(char *str1, char *str2)
 	return (*str2 - *str1);
 }
 
+
 int main(void)
 {
 	printf("\n--ex07--\n");
 	char *strs[8];
+	char *strss[3];
+	strss[0] = "3";
+	strss[1] = "1";
+	strss[2] = "2";
 	strs[0] = "3bhhiu92809~~mlkjs";
 	strs[1] = "ASss";
 	strs[2] = "~9~~mlkjsyou";
@@ -65,11 +70,15 @@ int main(void)
 	strs[5] = "";
 	strs[6] = "  zz~~";
 	strs[7] = 0;
-	printf("\nBefore decending sort\n");
+	printf("\n[ Before decending sort ]\n");
 	for (int i = 0; i < 7; i++)
 		printf("%s\n", strs[i]);
 	ft_advanced_sort_string_tab(strs, &decending_cmp);
-	printf("\nAfter decending sort\n");
+	printf("\n[ After decending sort ]\n");
 	for (int i = 0; i < 7; i++)
 		printf("%s\n", strs[i]);
+	printf("\n[ After decending sort ]\n");
+	ft_advanced_sort_string_tab(strss, &decending_cmp);
+	for (int i = 0; i < 3 ; i++)
+		printf("%s\n", strss[i]);
 }
