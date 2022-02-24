@@ -33,6 +33,12 @@ void	ft_putnbr(int nbr)
 {
 	if (nbr < 0)
 	{
+		if (nbr == -2147483648)
+		{
+			ft_putstr("-21");
+			ft_putstr("47483648");
+			return ;
+		}
 		ft_putstr("-");
 		nbr *= -1;
 	}
