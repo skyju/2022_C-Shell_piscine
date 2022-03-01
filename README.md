@@ -1,1 +1,1 @@
-# 42seoul
+# C / Shell
